@@ -12,13 +12,14 @@ app.use(cors({ origin: '*' }));
 
 app.use("/api/auth", authRoutes);
 app.use("/api", appRoutes);
+
 app.get("/", (req, res) => {
-  res.json({ message: "Server is running!" });
+  res.send("Backend is running!");
 });
 // Export để Vercel sử dụng như một API handler
-// const PORT = process.env.PORT || 5000;
-// app.listen(PORT, () => {
-//   console.log(`Server is running on port ${PORT}`);
-// });
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
 
 export default app;
